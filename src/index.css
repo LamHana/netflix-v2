@@ -7,7 +7,6 @@
 * {
   margin: 0;
   padding: 0;
-  font: inherit;
 }
 img,
 picture,
@@ -28,9 +27,34 @@ button {
   outline: none;
   border: 0;
 }
+@font-face {
+  font-family: 'Netflix Sans';
+  src: url('../src/assets/font/NetflixSans-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Netflix Sans';
+  src: url('../src/assets/font/NetflixSans-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Netflix Sans';
+  src: url('../src/assets/font/NetflixSans-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+
 body {
   min-height: 100vh;
-  font-weight: 400;
+  font-family: 'Netflix Sans', sans-serif;
   font-size: 16px;
+  color: white;
   line-height: 1;
+  background-color: #141414;
 }
