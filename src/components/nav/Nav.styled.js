@@ -11,7 +11,7 @@ export const Container = styled.div`
   &.dark_bg {
     background: rgb(20, 20, 20);
   }
-
+  z-index: 10;
   transition: all 0.5s ease-in;
 `;
 export const NavBar = styled.div`

@@ -13,7 +13,6 @@ function Nav() {
     window.addEventListener("scroll", transitionNavBar);
     return () => window.removeEventListener("scroll", transitionNavBar);
   }, []);
-  console.log(show);
   return (
     <Container className={`${show && "dark_bg"}`}>
       <NavBar>

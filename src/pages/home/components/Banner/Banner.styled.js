@@ -1,26 +1,26 @@
+import ReactPlayer from "react-player";
 import styled from "styled-components";
 export const Container = styled.header`
-  height: 650px;
+  height: 700px;
   background-image: ${({ url }) => (url ? `url(${url})` : null)};
   background-size: cover;
   background-position: center center;
   object-fit: contain;
+  position: relative;
+  z-index: 1;
 `;
+export const Backdrop = styled.div``;
 export const BannerContent = styled.div`
   position: absolute;
-  bottom: 30%;
-  left: 4%;
-  width: 45%;
+  bottom: 5%;
+  left: 5%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0) 100%
-  ); */
+  z-index: 2;
 `;
-export const Wapper = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -28,6 +28,7 @@ export const Wapper = styled.div`
     rgba(0, 0, 0, 0.6) 0%,
     rgba(0, 0, 0, 0) 100%
   );
+  position: relative;
 `;
 export const MovieName = styled.h1`
   font-size: 5rem;
@@ -38,7 +39,7 @@ export const MovieName = styled.h1`
 
 export const MovieDesc = styled.p`
   width: 45rem;
-  max-width: 460px;
+  max-width: 560px;
   height: 80px;
   color: #fff;
   font-size: 1.2vw;
@@ -80,4 +81,25 @@ export const MovieButton = styled.div`
 
 export const Blank = styled.div`
   width: 1rem;
+`;
+
+export const Bottom = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+  z-index: 1;
+`;
+
+export const Video = styled(ReactPlayer)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 `;

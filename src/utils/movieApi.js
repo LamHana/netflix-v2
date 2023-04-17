@@ -97,6 +97,28 @@ const requests = {
         return err;
       });
   },
+  movieDetail: async (movieId) => {
+    console.log(movieId);
+    const endpoint = `/movie/${movieId}`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  movieVideos: async (movieId) => {
+    console.log(movieId);
+    const endpoint = `/movie/${movieId}/videos`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
 };
 
 export default requests;
