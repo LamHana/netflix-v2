@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { Container, Movie, Poster, SliderWrapper, Title } from "./Row.styled";
+import {
+  Container,
+  Movie,
+  Poster,
+  SliderWrapper,
+  Title,
+  StyledBackArrowIcon,
+  StyledNextArrowIcon,
+} from "./Row.styled";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 function Row({ title, fetchURL }) {
   const [movie, setMovie] = useState([]);
   const getMovieData = async () => {
@@ -20,7 +27,11 @@ function Row({ title, fetchURL }) {
   return (
     <Container>
       <Title>{title}</Title>
-      <SliderWrapper {...settings}>
+      <SliderWrapper
+        prevArrow={<StyledBackArrowIcon />}
+        nextArrow={<StyledNextArrowIcon />}
+        {...settings}
+      >
         {movie.map((item) => {
           return (
             <Movie>

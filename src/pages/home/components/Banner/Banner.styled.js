@@ -18,7 +18,6 @@ export const BannerContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  z-index: 2;
 `;
 export const Wrapper = styled.div`
   width: 100%;
@@ -81,20 +80,6 @@ export const MovieButton = styled.div`
 
 export const Blank = styled.div`
   width: 1rem;
-`;
-
-export const Bottom = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 7.4rem;
-  background-image: linear-gradient(
-    180deg,
-    transparent,
-    rgba(37, 37, 37, 0.61),
-    #111
-  );
-  z-index: 1;
 `;
 
 export const Video = styled(ReactPlayer)`

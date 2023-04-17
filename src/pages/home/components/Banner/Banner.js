@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   BannerContent,
   Blank,
-  Bottom,
   Container,
   MovieButton,
   MovieDesc,
@@ -14,7 +13,6 @@ import {
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import requests from "../../../../utils/movieApi";
-import ReactPlayer from "react-player";
 function Banner() {
   const [movie, setMovie] = useState([]);
   const [trailer, setTrailer] = useState([]);
@@ -44,7 +42,11 @@ function Banner() {
     setTrailer(trailerId);
   };
   const trailerURL = `https://www.youtube.com/watch?v=${trailer}`;
-  getMovieDetail();
+  useEffect(() => {
+    if (movie?.id) {
+      getMovieDetail();
+    }
+  }, [movie]);
   console.log(trailerURL);
 
   function truncate(string, n) {
@@ -86,7 +88,6 @@ function Banner() {
             </button>
           </MovieButton>
         </BannerContent>
-        {/* <Bottom /> */}
       </Wrapper>
     </Container>
   );
