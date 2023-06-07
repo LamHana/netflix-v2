@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "../../components/nav/Nav";
 import Banner from "./components/Banner/Banner";
 import requests from "../../utils/movieApi";
 import Row from "./components/Row/Row";
+import { useState } from "react";
+import MovieDetail from "./movie/MovieDetail";
+import { scrollToTop } from "../../utils/ScrollToTop";
 
 function HomeScreen() {
+  const [show, setShow] = useState(false);
+  const [list, setList] = useState([]);
+  const [movie, setMovie] = useState();
   const movieRows = [
     {
       id: 1,
@@ -52,12 +58,51 @@ function HomeScreen() {
       fetchURL: requests.fetchTopRatedMovies,
     },
   ];
+  const getGenreList = async () => {
+    const tmp = await requests.getGenreList();
+    setList(tmp.data?.genres);
+  };
+
+  const handleOnClickMovie = async (e, id) => {
+    console.log(id);
+    const movieDetail = await requests.movieDetail(id);
+    setMovie(movieDetail?.data);
+    handleShow(true);
+  };
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleShow = () => {
+    setShow(true);
+  };
+
+  useEffect(() => {
+    getGenreList();
+  }, []);
+
   return (
     <>
+      <MovieDetail
+        handleClose={handleClose}
+        show={show}
+        movie={movie}
+        list={list}
+        handleOnClickMovie={handleOnClickMovie}
+      />
       <Nav />
-      <Banner />
-      {movieRows.map((row) => {
-        return <Row title={row.title} fetchURL={row.fetchURL} />;
+      <Banner handleOnClickMovie={handleOnClickMovie} />
+      {movieRows.map((row, index) => {
+        return (
+          <Row
+            title={row.title}
+            fetchURL={row.fetchURL}
+            key={index}
+            list={list}
+            handleOnClickMovie={handleOnClickMovie}
+          />
+        );
       })}
     </>
   );
