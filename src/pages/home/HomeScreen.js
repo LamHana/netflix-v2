@@ -5,7 +5,6 @@ import requests from "../../utils/movieApi";
 import Row from "./components/Row/Row";
 import { useState } from "react";
 import MovieDetail from "./movie/MovieDetail";
-import { scrollToTop } from "../../utils/ScrollToTop";
 
 function HomeScreen() {
   const [show, setShow] = useState(false);
