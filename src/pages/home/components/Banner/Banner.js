@@ -13,10 +13,27 @@ import {
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import requests from "../../../../utils/movieApi";
-function Banner() {
+function Banner({ handleOnClickMovie }) {
   const [movie, setMovie] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [showThumbnail, setShowThumbnail] = useState(false);
+  const playerRef = useRef(null);
+
+  const handleFullscreen = () => {
+    const videoElement = playerRef.current?.getInternalPlayer();
+    if (videoElement) {
+      console.log(videoElement);
+      if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+      } else if (videoElement.mozRequestFullScreen) {
+        videoElement.mozRequestFullScreen();
+      } else if (videoElement.webkitRequestFullscreen) {
+        videoElement.webkitRequestFullscreen();
+      } else if (videoElement.msRequestFullscreen) {
+        videoElement.msRequestFullscreen();
+      }
+    }
+  };
 
   const handleVideoEnd = () => {
     setShowThumbnail(true);
@@ -47,7 +64,6 @@ function Banner() {
       getMovieDetail();
     }
   }, [movie]);
-  console.log(trailerURL);
 
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + "..." : string;
@@ -61,12 +77,13 @@ function Banner() {
         <Backdrop />
       ) : (
         <Video
+          ref={playerRef}
           url={trailerURL}
           width="100%"
           height="100%"
           playing={true}
           controls={false}
-          autoplay={true}
+          autoPlay={true}
           muted={true}
           onEnded={handleVideoEnd}
         />
@@ -78,11 +95,11 @@ function Banner() {
           </MovieName>
           <MovieDesc>{truncate(movie?.overview, 200)}</MovieDesc>
           <MovieButton>
-            <button>
+            <button onClick={handleFullscreen}>
               <PlayArrowIcon /> <Blank />
               Play
             </button>
-            <button>
+            <button onClick={(e) => handleOnClickMovie(e, movie.id)}>
               <InfoOutlinedIcon /> <Blank />
               More Info
             </button>

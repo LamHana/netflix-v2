@@ -4,8 +4,8 @@ const API_KEY = "05b5815f816b01cd4c994616c31b146c";
 console.log(API_KEY);
 const requests = {
   fetchTrendingMovies: async () => {
-    const endpoint = `/trending/movie/week?api_key=${API_KEY}`;
-    return await get(endpoint, {}, {})
+    const endpoint = `/trending/movie/week`;
+    return await get(endpoint, { api_key: API_KEY }, {})
       .then((res) => {
         return res;
       })
@@ -98,7 +98,6 @@ const requests = {
       });
   },
   movieDetail: async (movieId) => {
-    console.log(movieId);
     const endpoint = `/movie/${movieId}`;
     return await get(endpoint, { api_key: API_KEY }, {})
       .then((res) => {
@@ -109,8 +108,77 @@ const requests = {
       });
   },
   movieVideos: async (movieId) => {
-    console.log(movieId);
     const endpoint = `/movie/${movieId}/videos`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  getGenreList: async () => {
+    const endpoint = `/genre/movie/list`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  getMovieCredit: async (movieId) => {
+    const endpoint = `/movie/${movieId}/credits`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  getMovieSimilar: async (movieId) => {
+    const endpoint = `/movie/${movieId}/similar`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  fetchPopularTVShows: async () => {
+    const endpoint = `/tv/popular`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  fetchTopRatedTVShows: async () => {
+    const endpoint = `/tv/top_rated`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  fetchOnTheAirTVShows: async () => {
+    const endpoint = `/tv/on_the_air`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  fetchAiringTodayTVShows: async () => {
+    const endpoint = `/tv/airing_today`;
     return await get(endpoint, { api_key: API_KEY }, {})
       .then((res) => {
         return res;

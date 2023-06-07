@@ -22,7 +22,8 @@ export const NavBar = styled.div`
 `;
 export const Logo = styled.img`
   align-items: center;
-  width: 80px;
+  width: 90px;
+  margin-right: 25px;
 `;
 export const Avt = styled.img`
   width: 30px;
@@ -31,4 +32,25 @@ export const Avt = styled.img`
 export const LeftNav = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const RightNav = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Menu = styled.ul`
+  display: flex;
+  align-items: center;
+`;
+
+export const MenuItem = styled.li`
+  list-style: none;
+  margin-left: 20px;
+  font-size: 14px;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 `;
