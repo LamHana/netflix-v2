@@ -187,6 +187,36 @@ const requests = {
         return err;
       });
   },
+  fetchPopularMovies: async () => {
+    const endpoint = `/movie/popular`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  fetchNowPlayingMovies: async () => {
+    const endpoint = `/movie/now_playing`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
+  fetchUpcomingMovies: async () => {
+    const endpoint = `/movie/upcoming`;
+    return await get(endpoint, { api_key: API_KEY }, {})
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  },
 };
 
 export default requests;

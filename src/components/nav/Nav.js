@@ -18,7 +18,28 @@ function Nav() {
       setShow(true);
     } else setShow(false);
   };
-  const menu = ["Home", "TV Shows", "Movies", "New & Popular", "My List"];
+  const menu = [
+    {
+      name: "Home",
+      link: "/home",
+    },
+    {
+      name: "TV Shows",
+      link: "/home/tv-shows",
+    },
+    {
+      name: "Movies",
+      link: "/home/movies",
+    },
+    {
+      name: "New & Popular",
+      link: "/home/new-and-popular",
+    },
+    {
+      name: "My List",
+      link: "/home/my-list",
+    },
+  ];
   useEffect(() => {
     window.addEventListener("scroll", transitionNavBar);
     return () => window.removeEventListener("scroll", transitionNavBar);
@@ -32,7 +53,7 @@ function Nav() {
             {menu.map((item, index) => {
               return (
                 <MenuItem key={index}>
-                  <Link> {item} </Link>
+                  <Link to={item.link}> {item.name} </Link>
                 </MenuItem>
               );
             })}

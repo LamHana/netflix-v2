@@ -13,26 +13,16 @@ import {
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import requests from "../../../../utils/movieApi";
+import { findDOMNode } from "react-dom";
+import screenfull from "screenfull";
 function Banner({ handleOnClickMovie }) {
   const [movie, setMovie] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [showThumbnail, setShowThumbnail] = useState(false);
   const playerRef = useRef(null);
 
-  const handleFullscreen = () => {
-    const videoElement = playerRef.current?.getInternalPlayer();
-    if (videoElement) {
-      console.log(videoElement);
-      if (videoElement.requestFullscreen) {
-        videoElement.requestFullscreen();
-      } else if (videoElement.mozRequestFullScreen) {
-        videoElement.mozRequestFullScreen();
-      } else if (videoElement.webkitRequestFullscreen) {
-        videoElement.webkitRequestFullscreen();
-      } else if (videoElement.msRequestFullscreen) {
-        videoElement.msRequestFullscreen();
-      }
-    }
+  const handleClickFullscreen = () => {
+    screenfull.request(findDOMNode(this.player));
   };
 
   const handleVideoEnd = () => {
@@ -95,7 +85,7 @@ function Banner({ handleOnClickMovie }) {
           </MovieName>
           <MovieDesc>{truncate(movie?.overview, 200)}</MovieDesc>
           <MovieButton>
-            <button onClick={handleFullscreen}>
+            <button onClick={handleClickFullscreen}>
               <PlayArrowIcon /> <Blank />
               Play
             </button>
